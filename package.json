@@ -1,0 +1,22 @@
+{
+  "name": "pricechecker",
+  "version": "1.0.0",
+  "description": "grocery price checker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CameronSchafer/PriceChecker.git"
+  },
+  "author": "camschaf@hotmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CameronSchafer/PriceChecker/issues"
+  },
+  "homepage": "https://github.com/CameronSchafer/PriceChecker#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}

@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Grocery List</h1>
+    <form id="addItem" action="#" method="POST">
+        <div>
+            <input placeholder="Item" id="item" name="item" type="text">
+            <span>
+                <button type="submit" onclick="formSubmit(event)">Add Item</button>
+            </span>
+        </div>
+    </form>
+</body>
+<script>
+    function formSubmit(e) {
+        e.preventDefault();
+        const item = $('#item').val();
+        console.log(item);
+
+        if (!item) return;
+
+        $.ajax({
+            url: '/add_item',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ 'item': item }),
+            success: function (data) {
+                console.log('Submission was successful.');
+                console.log(data);
+            },
+            error: function (data) {
+                console.log('An error occurred.');
+                console.log(data);
+            },
+        });
+    }
+</script>
+
+</html>

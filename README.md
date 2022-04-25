@@ -1,2 +1,2 @@
 # PriceChecker
-Check prices of groceries for 
+Check prices of groceries for Coles and Woolworths
