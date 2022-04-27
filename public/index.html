@@ -2,42 +2,81 @@
 
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="helpers.js" defer></script>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th {
+            min-height: 100px;
+        }
+
+        #itemTable {
+            table-layout: fixed;
+            min-width: 40%;
+            max-width: 100%;
+        }
+
+        #nameColumn {
+            min-width: 15%;
+            max-width: 50%;
+        }
+
+        #linkColumn {
+            min-width: 30%;
+        }
+
+        .itemDiv {
+            margin-left: auto;
+            margin-right: 0;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .buttonCancel {
+            background-color: #f44336;
+        }
+        #itemInput {
+            width: 200px;
+            padding: 15px 32px;
+            margin: 4px 2px;
+            text-decoration: none;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 
-<body>
+<body onload="getSavedItems();">
     <h1>Grocery List</h1>
     <form id="addItem" action="#" method="POST">
         <div>
-            <input placeholder="Item" id="item" name="item" type="text">
+            <input placeholder="Item" id="itemInput" name="item" type="text">
             <span>
-                <button type="submit" onclick="formSubmit(event)">Add Item</button>
+                <button type="submit" onclick="addItem(event)" class="button">Add Item</button>
             </span>
         </div>
     </form>
+    <div>
+        <table id="itemTable">
+            <tbody id="savedItems"></tbody>
+        </table>
+    </div>
 </body>
-<script>
-    function formSubmit(e) {
-        e.preventDefault();
-        const item = $('#item').val();
-        console.log(item);
-
-        if (!item) return;
-
-        $.ajax({
-            url: '/add_item',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ 'item': item }),
-            success: function (data) {
-                console.log('Submission was successful.');
-                console.log(data);
-            },
-            error: function (data) {
-                console.log('An error occurred.');
-                console.log(data);
-            },
-        });
-    }
-</script>
 
 </html>
